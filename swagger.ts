@@ -7,12 +7,13 @@ const swaggerOptions = {
   swaggerDefinition: {
     openapi: '3.0.1',
     info: {
-      title: 'API Rest',
+      title: 'REST API',
       version: '1.0.0'
     },
     servers: [
       {
-        url: 'https://rest-api-backend-app.vercel.app'        
+        url: 'https://test-rest-api-backend-app.vercel.app'        
+        //url: 'http://localhost:3000'
       }
     ],
   },

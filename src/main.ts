@@ -12,8 +12,8 @@ async function bootstrap() {
     .setDescription('CRUD server built self-taught.')
     .setVersion('1.0')
     .build();
-  //const document = SwaggerModule.createDocument(app, config);
-  //app.use('', swaggerUI.serve, swaggerUI.setup(document));
+  const document = SwaggerModule.createDocument(app, config);
+  //app.use('/', swaggerUI.serve, swaggerUI.setup(document));
 
   app.use('/', swaggerRouter);
 
