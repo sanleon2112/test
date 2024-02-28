@@ -11,10 +11,8 @@ interface SwaggerCustomOptions {
     docExpansion: string;
     defaultModelsExpandDepth: number;
   };
-  customCss: string;
   swaggerUrl: string;
-  swaggerJs: string;
-  swaggerCss: string;
+
 }
 
 async function bootstrap() {
@@ -38,11 +36,8 @@ async function bootstrap() {
       ],
       docExpansion: 'none',
       defaultModelsExpandDepth: -1,
-    },
-    customCss: '.swagger-ui .topbar { display: none }',
-    swaggerUrl: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.8/swagger-ui-bundle.js',
-    swaggerJs: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.8/swagger-ui.js',
-    swaggerCss: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.8/swagger-ui.css',
+    },    
+    swaggerUrl: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.8/'        
   };
 
   SwaggerModule.setup('/api-docs', app, document, options);
