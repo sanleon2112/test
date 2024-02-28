@@ -11,7 +11,19 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('/api-docs', app, document);
+
+  SwaggerModule.setup('/api-docs', app, document, {
+    swaggerOptions: {
+      urls: [
+        {
+          url: '/api-docs/swagger.json',
+          name: 'API',
+        },
+      ],
+      docExpansion: 'none',
+      defaultModelsExpandDepth: -1,
+    },
+  });
 
   await app.listen(3000);
 }

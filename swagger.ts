@@ -12,12 +12,10 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'https://test-rest-api-backend-app.vercel.app'        
-        //url: 'http://localhost:3000'
+        url: 'https://test-rest-api-backend-app.vercel.app'          
       }
     ],
-  },
-  //apis: [path.join(__dirname, 'src/users/*.ts')]
+  },  
   apis: [path.join(__dirname, 'src/users/users.controller.ts')]
 };
 
