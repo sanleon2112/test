@@ -10,9 +10,8 @@ interface SwaggerCustomOptions {
     }[];
     docExpansion: string;
     defaultModelsExpandDepth: number;
-  };
+  };  
   swaggerUrl: string;
-
 }
 
 async function bootstrap() {
