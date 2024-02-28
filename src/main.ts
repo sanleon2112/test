@@ -20,6 +20,7 @@ interface SwaggerCustomOptions {
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Configuración de Swagger
   const config = new DocumentBuilder()
     .setTitle('REST API')
     .setDescription('CRUD server built self-taught.')
@@ -39,13 +40,15 @@ async function bootstrap() {
       defaultModelsExpandDepth: -1,
     },
     customCss: '.swagger-ui .topbar { display: none }',
-    swaggerUrl: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@3.23.1/swagger-ui-bundle.js',
-    swaggerJs: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@3.23.1/swagger-ui.js',
-    swaggerCss: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@3.23.1/swagger-ui.css',
+    swaggerUrl: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.8/swagger-ui-bundle.js',
+    swaggerJs: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.8/swagger-ui.js',
+    swaggerCss: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.8/swagger-ui.css',
   };
 
   SwaggerModule.setup('/api-docs', app, document, options);
 
+  // Manejar redirección en la raíz
   await app.listen(3000);
 }
+
 bootstrap();
