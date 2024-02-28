@@ -2,6 +2,21 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
+interface SwaggerCustomOptions {
+  swaggerOptions: {
+    urls: {
+      url: string;
+      name: string;
+    }[];
+    docExpansion: string;
+    defaultModelsExpandDepth: number;
+  };
+  customCss: string;
+  swaggerUrl: string;
+  swaggerJs: string;
+  swaggerCss: string;
+}
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
@@ -12,7 +27,7 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
 
-  SwaggerModule.setup('/api-docs', app, document, {
+  const options: SwaggerCustomOptions = {
     swaggerOptions: {
       urls: [
         {
@@ -23,7 +38,13 @@ async function bootstrap() {
       docExpansion: 'none',
       defaultModelsExpandDepth: -1,
     },
-  });
+    customCss: '.swagger-ui .topbar { display: none }',
+    swaggerUrl: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui-bundle.js',
+    swaggerJs: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui.js',
+    swaggerCss: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui.css',
+  };
+
+  SwaggerModule.setup('/api-docs', app, document, options);
 
   await app.listen(3000);
 }
