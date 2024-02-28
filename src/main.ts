@@ -39,9 +39,9 @@ async function bootstrap() {
       defaultModelsExpandDepth: -1,
     },
     customCss: '.swagger-ui .topbar { display: none }',
-    swaggerUrl: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@latest/swagger-ui-bundle.js',
-    swaggerJs: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@latest/swagger-ui.js',
-    swaggerCss: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@latest/swagger-ui.css',
+    swaggerUrl: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@3.23.1/swagger-ui-bundle.js',
+    swaggerJs: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@3.23.1/swagger-ui.js',
+    swaggerCss: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@3.23.1/swagger-ui.css',
   };
 
   SwaggerModule.setup('/api-docs', app, document, options);
