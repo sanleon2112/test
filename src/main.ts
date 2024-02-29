@@ -9,7 +9,6 @@ async function bootstrap() {
   setupSwagger(app);
 
   app.use('/', express.static(path.join(__dirname, '..', 'public', 'swagger')));
-
   await app.listen(3000);
 }
 
