@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "public/swagger/$1"
+      "dest": "/public/swagger/$1"
     },
     {
       "src": "/(.*)",
