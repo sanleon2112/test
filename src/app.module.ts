@@ -3,6 +3,9 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { UsersModule } from './users/users.module';
 import { UsersAPI } from "./users/entities/usersAPI.entity";
 import { ConfigModule } from '@nestjs/config';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import * as express from 'express';
+import * as path from 'path';
 
 @Module({
   imports: [
@@ -28,4 +31,20 @@ import { ConfigModule } from '@nestjs/config';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    const app = express();
+    
+    app.use('/swagger', express.static(path.join(__dirname, '../public/swagger')));
+
+    const options = new DocumentBuilder()
+      .setTitle('Your API Title')
+      .setDescription('Your API Description')
+      .setVersion('1.0')
+      .addTag('your-tag')
+      .build();
+
+    const document = SwaggerModule.createDocument(app, options);
+    SwaggerModule.setup('swagger', app, document);
+  }
+}
