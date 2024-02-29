@@ -2,18 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
-interface SwaggerCustomOptions {
-  swaggerOptions: {
-    urls: {
-      url: string;
-      name: string;
-    }[];
-    docExpansion: string;
-    defaultModelsExpandDepth: number;
-  };  
-  swaggerUrl: string;
-}
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
@@ -25,21 +13,9 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
 
-  const options: SwaggerCustomOptions = {
-    swaggerOptions: {
-      urls: [
-        {
-          url: '/api-docs/swagger.json',
-          name: 'API',
-        },
-      ],
-      docExpansion: 'none',
-      defaultModelsExpandDepth: -1,
-    },    
-    swaggerUrl: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.8/'        
-  };
-
-  SwaggerModule.setup('/api-docs', app, document, options);
+  SwaggerModule.setup('/api-docs', app, document, {
+    swaggerUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.8/swagger-ui-bundle.js',
+  });
 
   // Manejar redirección en la raíz
   await app.listen(3000);
