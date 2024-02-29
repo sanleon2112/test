@@ -15,6 +15,22 @@ async function bootstrap() {
 
   SwaggerModule.setup('/api-docs', app, document, {
     swaggerUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.8/swagger-ui-bundle.js',
+    swaggerOptions: {
+      urls: [
+        {
+          url: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.8/swagger-ui.css',
+          name: 'swagger-ui.css'
+        },
+        {
+          url: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.8/swagger-ui-bundle.js',
+          name: 'swagger-ui-bundle.js'
+        },
+        {
+          url: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.8/swagger-ui-standalone-preset.js',
+          name: 'swagger-ui-standalone-preset.js'
+        }
+      ]
+    }
   });
 
   // Manejar redirección en la raíz
